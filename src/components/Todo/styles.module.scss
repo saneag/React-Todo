@@ -1,0 +1,64 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.todo_container {
+    height: 100%;
+    display: flex;
+    @include displayFlex(column, center, center);
+    gap: 20px;
+
+    .todo_header {
+        font-size: 3rem;
+        color: $green-color;
+    }
+
+    .todo_body {
+        @include displayFlex(column, center);
+        gap: 10px;
+
+        .todo_placeholder {
+            font-size: 1.5rem;
+            color: #fff;
+        }
+    }
+
+    .todo_footer {
+        @include displayFlex(column, $align: center);
+        gap: 20px;
+
+        .input_field {
+            @include displayFlex(column, $align: center);
+            gap: 10px;
+
+            .error_message {
+                visibility: hidden;
+                color: #ff0000;
+                font-size: 1.2rem;
+
+                &.show {
+                    visibility: visible;
+                }
+            }
+
+            .todo_input {
+                background-color: transparent;
+                border-bottom: 1px solid #fff;
+                color: #fff;
+                font-size: 1.2rem;
+                padding: 10px;
+            }
+
+            .max_input_length {
+                font-size: 14px;
+                color: #fff;
+                align-self: flex-end;
+            }
+        }
+
+        .add_button {
+            padding: 10px 20px;
+            border-radius: 10px;
+            background-color: $green-color;
+        }
+    }
+}

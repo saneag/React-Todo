@@ -1,0 +1,26 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.todo_item {
+    @include displayFlex($justify: space-between, $align: center);
+    gap: 20px;
+    width: 400px;
+    height: 50px;
+    padding: 0 20px;
+    background-color: $secondary-color;
+    border-radius: 10px;
+
+    .todo_description {
+        color: #fff;
+        font-size: 1.2rem;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .remove_button {
+        padding: 2px;
+        color: #c53b3b;
+        cursor: pointer;
+    }
+}
