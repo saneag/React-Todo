@@ -9,6 +9,34 @@
     padding: 0 20px;
     background-color: $secondary-color;
     border-radius: 10px;
+    user-select: none;
+
+    &.hover_description {
+        position: relative;
+        cursor: pointer;
+
+        &::before {
+            content: attr(data-description);
+            visibility: hidden;
+            opacity: 0;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 5px;
+            transition: opacity 1s ease-in-out;
+
+            position: absolute;
+            z-index: 1;
+            left: 0;
+            top: 110%;
+        }
+
+        &:hover::before {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
 
     .todo_description {
         color: #fff;
@@ -16,6 +44,7 @@
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        height: 1.1em;
     }
 
     .remove_button {

@@ -1,16 +1,16 @@
 @import 'resets';
 @import 'variables';
+@import 'mixins';
 
 .App {
-    min-height: 100vh;
     background-color: $primary-color;
     font-family: $QuickSand;
 
     .container {
-        height: 0;
+        @include displayFlex(column, center, center);
         min-height: 100vh;
         max-width: 1170px;
-        padding: 0 40px;
+        padding: 20px 40px;
         margin: 0 auto;
     }
 }

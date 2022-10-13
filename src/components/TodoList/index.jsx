@@ -4,10 +4,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons'
 
 import styles from './styles.module.scss'
 
-const TodoList = ({ todo, handleEditClick, handleDeleteClick }) => {
+const TodoList = ({ todo, handleDeleteClick }) => {
 
     return (
-        <div className={`${styles.todo_item} ${styles.todo_completed ? todo.completed : ''}`}>
+        <div
+            className={`${styles.todo_item} ${todo.description.length > 15 ? styles.hover_description : ''}`}
+            data-description={todo.description}
+        >
             <span className={styles.todo_description}>{todo.description}</span>
             <FontAwesomeIcon
                 icon={faTrash}

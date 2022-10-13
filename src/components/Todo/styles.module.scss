@@ -2,8 +2,6 @@
 @import '../../styles/mixins';
 
 .todo_container {
-    height: 100%;
-    display: flex;
     @include displayFlex(column, center, center);
     gap: 20px;
 

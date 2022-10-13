@@ -1,7 +1,6 @@
 import React from 'react'
 
 import TodoList from '../TodoList'
-import TodoModal from '../TodoModal'
 
 import styles from './styles.module.scss'
 
@@ -10,8 +9,6 @@ const Todo = () => {
     const [inputValue, setInputValue] = React.useState('')
     const [showError, setShowError] = React.useState(false)
     const [lengthText, setLengthText] = React.useState(0)
-
-    const [todoDescription, setTodoDescription] = React.useState('')
 
     React.useEffect(() => {
         setTodos(JSON.parse(localStorage.getItem('todos')) || [])
@@ -66,41 +63,37 @@ const Todo = () => {
         }, [todos, setTodos])
 
     return (
-        <>
-            <div className={styles.todo_container}>
-                <p className={styles.todo_header}>Todo</p>
-                <div className={styles.todo_body}>
-                    {
-                        todos.length === 0 ? <p className={styles.todo_placeholder}>Nothing here yet.</p> :
-                            todos.map(todo => {
-                                return <TodoList
-                                    key={todo.id}
-                                    todo={todo}
-                                    handleDeleteClick={handleDeleteClick}
-                                    setTodoDescription={setTodoDescription}
-                                />
-                            })
-                    }
-                </div>
-                <div className={styles.todo_footer}>
-                    <div className={styles.input_field}>
-                        <input
-                            className={styles.todo_input}
-                            type='text'
-                            placeholder='Add a task'
-                            value={inputValue}
-                            maxLength='100'
-                            onChange={e => onChangeInput(e)}
-                            onKeyPress={e => handleKeyPress(e)}
-                        />
-                        <span className={styles.max_input_length}>{lengthText} / 100</span>
-                        <span className={`${styles.error_message} ${showError ? styles.show : ''}`}>Enter task!</span>
-                    </div>
-                    <button className={styles.add_button} onClick={handleAddClick}>Add</button>
-                </div>
+        <div className={styles.todo_container}>
+            <p className={styles.todo_header}>Todo</p>
+            <div className={styles.todo_body}>
+                {
+                    todos.length === 0 ? <p className={styles.todo_placeholder}>Nothing here yet.</p> :
+                        todos.map(todo => {
+                            return <TodoList
+                                key={todo.id}
+                                todo={todo}
+                                handleDeleteClick={handleDeleteClick}
+                            />
+                        })
+                }
             </div>
-            {todoDescription && <TodoModal todoDescription={todoDescription} />}
-        </>
+            <div className={styles.todo_footer}>
+                <div className={styles.input_field}>
+                    <input
+                        className={styles.todo_input}
+                        type='text'
+                        placeholder='Add a task'
+                        value={inputValue}
+                        maxLength='100'
+                        onChange={e => onChangeInput(e)}
+                        onKeyPress={e => handleKeyPress(e)}
+                    />
+                    <span className={styles.max_input_length}>{lengthText} / 100</span>
+                    <span className={`${styles.error_message} ${showError ? styles.show : ''}`}>Enter task!</span>
+                </div>
+                <button className={styles.add_button} onClick={handleAddClick}>Add</button>
+            </div>
+        </div>
     )
 }
 
